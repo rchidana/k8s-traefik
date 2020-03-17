@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: greetings
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: hello.minikube
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hello-service
+          servicePort: http
+          
+  - host: welcome.minikube
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: welcome-service
+          servicePort: http
+          
+  - host: goodbye.minikube
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: goodbye-service
+          servicePort: http

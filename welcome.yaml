@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: welcome-app
+  labels:
+    app: welcome
+spec:
+  containers:
+    - name: welcome-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=Welcome"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: welcome-service
+spec:
+  selector:
+    app: welcome
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5678 # Default port for image

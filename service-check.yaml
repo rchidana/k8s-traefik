@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mynodeapp-check
+ 
+spec:
+  containers:
+  - name: mynodeapp-container
+    image: anandr72/mynodeapp
+    ports: 
+      - containerPort: 8085
+        protocol: TCP

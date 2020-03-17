@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: goodbye-app
+  labels:
+    app: goodbye
+spec:
+  containers:
+    - name: goodbye-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=Good Bye"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: goodbye-service
+spec:
+  selector:
+    app: goodbye
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5678 # Default port for image
